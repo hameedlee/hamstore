@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Glow & Style</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Glow & Style — Luxury creams and custom fashion" />
+  <style>
+    /* small custom animations to pair with Tailwind's utilities */
+    @keyframes float-up { 0% { transform: translateY(8px); opacity: .8 } 100% { transform: translateY(0); opacity: 1 } }
+    .float-up { animation: float-up 600ms ease-out both }
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(6px); }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white text-gray-900 antialiased">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/60 backdrop-blur-sm shadow-sm">
+    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="inline-flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 via-yellow-300 to-indigo-400 flex items-center justify-center text-white font-bold">G&amp;S</div>
+        <span class="font-semibold">Glow &amp; Style</span>
+      </a>
+      <nav class="hidden md:flex gap-4 items-center text-sm">
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#products" class="hover:underline">Creams</a>
+        <a href="#portfolio" class="hover:underline">Designs</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
+      <div class="md:hidden">
+        <button id="mobileMenuBtn" aria-label="Open menu" class="p-2 rounded-md hover:bg-gray-100">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t bg-white/60 backdrop-blur-sm">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="#about" class="py-2">About</a>
+        <a href="#products" class="py-2">Creams</a>
+        <a href="#portfolio" class="py-2">Designs</a>
+        <a href="#contact" class="py-2">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="max-w-3xl mx-auto px-4 pt-8 pb-16">
+    <section class="grid gap-6">
+      <div class="relative bg-white rounded-2xl p-6 shadow-lg glass overflow-hidden">
+        <div class="absolute -right-10 -top-10 w-48 h-48 rounded-full bg-gradient-to-tr from-pink-200 to-yellow-200 opacity-30 blur-3xl"></div>
+        <div class="flex flex-col md:flex-row items-start gap-6">
+          <div class="flex-1">
+            <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight">Glow &amp; Style: <span class="text-gradient text-pink-500">Where Skin Meets Couture</span></h1>
+            <p class="mt-3 text-gray-600">Luxury creams and custom fashion for every moment</p>
+
+            <div class="mt-5 flex gap-3">
+              <a href="#products" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-pink-500 text-white font-medium shadow hover:scale-[1.02] transition-transform">Shop Creams</a>
+              <a href="#portfolio" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-sm">View Designs</a>
+            </div>
+
+            <ul class="mt-5 flex flex-wrap gap-2 text-xs text-gray-500">
+              <li class="flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-green-400"></span> Ethical sourcing</li>
+              <li class="flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-green-400"></span> Premium ingredients</li>
+              <li class="flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-green-400"></span> Bespoke tailoring</li>
+            </ul>
+          </div>
+
+          <div class="w-full md:w-44 lg:w-56 flex-shrink-0">
+            <div class="rounded-xl overflow-hidden shadow-md float-up">
+              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="product" class="w-full h-44 object-cover" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <section id="about" class="bg-white rounded-2xl p-6 shadow-sm">
+        <h2 class="text-xl font-semibold">About</h2>
+        <p class="mt-2 text-gray-600">Mission: we blend skincare science and fashion artistry — ethically sourced ingredients meet handcrafted tailoring to create products and garments that feel luxurious and responsible.</p>
+
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+          <div class="p-3 rounded-lg border">
+            <h3 class="font-medium">Ethical Sourcing</h3>
+            <p class="text-gray-500 mt-1">Traceable suppliers &amp; cruelty-free testing.</p>
+          </div>
+          <div class="p-3 rounded-lg border">
+            <h3 class="font-medium">Premium Ingredients</h3>
+            <p class="text-gray-500 mt-1">Botanical actives and clinical-grade formulations.</p>
+          </div>
+          <div class="p-3 rounded-lg border">
+            <h3 class="font-medium">Bespoke Tailoring</h3>
+            <p class="text-gray-500 mt-1">Custom fits for individuals and institutions.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section id="products" class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl font-semibold">Cream Product Showcase</h2>
+          <div class="text-sm text-gray-500">Options: single, bulk &amp; subscriptions</div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- product card template repeated -->
+          <article class="p-4 rounded-lg border flex items-start gap-4">
+            <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="cream 1" class="w-20 h-20 rounded-md object-cover" />
+            <div class="flex-1">
+              <h3 class="font-medium">Radiant Day Serum</h3>
+              <p class="text-sm text-gray-500 mt-1">Lightweight daily cream with vitamin C + peptides.</p>
+              <div class="mt-3 flex items-center gap-2">
+                <button class="px-3 py-1 rounded-md text-sm bg-pink-50">Buy Now</button>
+                <button class="px-3 py-1 rounded-md text-sm border">Subscribe</button>
+                <span class="ml-auto text-xs text-gray-400">Bulk pricing available</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="p-4 rounded-lg border flex items-start gap-4">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="cream 2" class="w-20 h-20 rounded-md object-cover" />
+            <div class="flex-1">
+              <h3 class="font-medium">Velvet Night Repair</h3>
+              <p class="text-sm text-gray-500 mt-1">Rich reparative cream with retinol alternatives.</p>
+              <div class="mt-3 flex items-center gap-2">
+                <button class="px-3 py-1 rounded-md text-sm bg-pink-50">Buy Now</button>
+                <button class="px-3 py-1 rounded-md text-sm border">Subscribe</button>
+                <span class="ml-auto text-xs text-gray-400">Bulk discounts</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        <div class="mt-4 text-center">
+          <a href="#" class="text-sm underline">View full product catalog</a>
+        </div>
+      </section>
+
+      <!-- Portfolio -->
+      <section id="portfolio" class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl font-semibold">Fashion Portfolio</h2>
+          <a href="#" class="text-sm text-pink-500">See full gallery</a>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <img src="https://images.unsplash.com/photo-1520975698511-9e4c441d3bfb?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="streetwear" class="rounded-lg object-cover h-28 w-full"/>
+          <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="couture" class="rounded-lg object-cover h-28 w-full"/>
+          <img src="https://images.unsplash.com/photo-1531123414780-f0b58f1cf6ae?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="uniform" class="rounded-lg object-cover h-28 w-full"/>
+        </div>
+
+        <div class="mt-4">
+          <h3 class="font-medium">Book a custom order</h3>
+          <form class="mt-3 grid gap-2">
+            <input class="p-3 rounded-md border" placeholder="Your name" />
+            <input class="p-3 rounded-md border" placeholder="Email or phone" />
+            <textarea class="p-3 rounded-md border" rows="3" placeholder="Describe your custom order"></textarea>
+            <div class="flex gap-2">
+              <button type="submit" class="px-4 py-2 rounded-md bg-pink-500 text-white">Request Quote</button>
+              <a href="#" class="px-4 py-2 rounded-md border">Video Walkthrough</a>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services" class="bg-white rounded-2xl p-6 shadow-sm">
+        <h2 class="text-xl font-semibold">Services</h2>
+        <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+          <div class="p-3 border rounded-lg">
+            <h4 class="font-medium">Branding &amp; Packaging</h4>
+            <p class="text-gray-500 mt-1">Design, sustainable packaging options &amp; launch support.</p>
+          </div>
+          <div class="p-3 border rounded-lg">
+            <h4 class="font-medium">Fashion Consultations</h4>
+            <p class="text-gray-500 mt-1">Style direction, fittings &amp; mockups.</p>
+          </div>
+          <div class="p-3 border rounded-lg">
+            <h4 class="font-medium">Sustainable Materials</h4>
+            <p class="text-gray-500 mt-1">Recycled &amp; low-impact fabrics for uniforms and couture.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="bg-white rounded-2xl p-6 shadow-sm">
+        <h2 class="text-xl font-semibold">FAQ</h2>
+        <div class="mt-3 space-y-2">
+          <details class="p-3 rounded-lg border">
+            <summary class="font-medium">Can I order samples?</summary>
+            <p class="mt-2 text-sm text-gray-500">Yes — sample kits are available for creams and fabric swatches for garments.</p>
+          </details>
+          <details class="p-3 rounded-lg border">
+            <summary class="font-medium">Do you offer sustainable fabrics?</summary>
+            <p class="mt-2 text-sm text-gray-500">We offer recycled and organic options; request a sustainability consultation for bulk orders.</p>
+          </details>
+          <details class="p-3 rounded-lg border">
+            <summary class="font-medium">What’s the turnaround time?</summary>
+            <p class="mt-2 text-sm text-gray-500">Creams: 3–7 business days. Custom garments: 2–6 weeks depending on complexity and quantity.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="bg-white rounded-2xl p-6 shadow-sm">
+        <h2 class="text-xl font-semibold">Contact</h2>
+        <p class="text-sm text-gray-600 mt-2">Questions? Send a message or start a chat on WhatsApp.</p>
+
+        <form class="mt-3 grid gap-3">
+          <input name="name" class="p-3 rounded-md border" placeholder="Full name" required />
+          <input name="email" type="email" class="p-3 rounded-md border" placeholder="Email address" required />
+          <textarea name="message" class="p-3 rounded-md border" rows="4" placeholder="How can we help?" required></textarea>
+          <div class="flex gap-2">
+            <button type="submit" class="px-4 py-2 rounded-md bg-pink-500 text-white">Send Message</button>
+            <a href="https://wa.me/" target="_blank" rel="noopener" class="px-4 py-2 rounded-md border inline-flex items-center gap-2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a9 9 0 1 1-6.3-8.7L21 3v8.5z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </form>
+      </section>
+
+      <!-- Footer -->
+      <footer class="mt-6 text-sm text-gray-500">
+        <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <p class="font-medium">Follow us</p>
+              <div class="mt-2 flex gap-3">
+                <a href="#" aria-label="Instagram" class="text-pink-500">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">Facebook</a>
+              </div>
+            </div>
+            <div class="w-full sm:w-auto">
+              <form class="flex gap-2">
+                <input placeholder="Your email" class="p-2 rounded-md border flex-1" />
+                <button class="px-3 py-2 rounded-md bg-pink-500 text-white">Subscribe</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="mt-4 text-center text-xs text-gray-400">© <span id="year"></span> Glow &amp; Style — All rights reserved</div>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // small interactivity
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // simple submit handlers to prevent navigation in the demo
+    document.querySelectorAll('form').forEach(f => f.addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Form submitted (demo). Replace with real handler or backend endpoint.');
+    }));
+  </script>
+</body>
+</html>
