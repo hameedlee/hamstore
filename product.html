@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosehip Radiance Cream | Hams Store</title>
+    <meta name="description" content="A luxurious facial cream infused with organic rosehip oil to restore and rejuvenate your skin.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream': '#F5F2ED',
+                        'beige': '#E8DFD3',
+                        'gold': '#D4AF37',
+                        'dark-cream': '#D6CFC2',
+                        'light-gold': '#F0E6D2',
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #D4AF37;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .thumbnail {
+            transition: all 0.3s ease;
+        }
+        
+        .thumbnail:hover {
+            opacity: 0.8;
+        }
+        
+        .thumbnail.active {
+            border: 2px solid #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-cream">
+    <!-- Header Navigation -->
+    <header class="fixed top-0 w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-serif font-bold text-gray-800">Hams Store</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-gold transition-colors duration-300 flex items-center">
+                            Creams <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                            <a href="shop.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">All Products</a>
+                            <a href="shop.html?category=skincare" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Skincare</a>
+                            <a href="shop.html?category=body" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Body Creams</a>
+                            <a href="shop.html?category=specialty" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Specialty</a>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-gold transition-colors duration-300 flex items-center">
+                            Fashion <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                            <a href="collections.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Collections</a>
+                            <a href="bespoke.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Bespoke Design</a>
+                            <a href="bespoke.html#process" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Our Process</a>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="text-gray-700 hover:text-gold transition-colors duration-300">About</a>
+                    <a href="blog.html" class="text-gray-700 hover:text-gold transition-colors duration-300">Blog</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-gold transition-colors duration-300">Contact</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-700 hover:text-gold transition-colors duration-300">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="text-gray-700 hover:text-gold transition-colors duration-300">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <a href="cart.html" class="relative text-gray-700 hover:text-gold transition-colors duration-300">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="shop.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">All Products</a>
+                <a href="shop.html?category=skincare" class="block text-gray-700 hover:text-gold transition-colors duration-300">Skincare</a>
+                <a href="shop.html?category=body" class="block text-gray-700 hover:text-gold transition-colors duration-300">Body Creams</a>
+                <a href="shop.html?category=specialty" class="block text-gray-700 hover:text-gold transition-colors duration-300">Specialty</a>
+                <a href="collections.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Collections</a>
+                <a href="bespoke.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Bespoke Design</a>
+                <a href="about.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">About</a>
+                <a href="blog.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Blog</a>
+                <a href="contact.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Breadcrumb -->
+    <section class="pt-24 pb-4 bg-white">
+        <div class="container mx-auto px-4">
+            <nav class="flex text-sm text-gray-600">
+                <a href="index.html" class="hover:text-gold transition-colors duration-300">Home</a>
+                <span class="mx-2">/</span>
+                <a href="shop.html" class="hover:text-gold transition-colors duration-300">Shop</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-800">Rosehip Radiance Cream</span>
+            </nav>
+        </div>
+    </section>
+    
+    <!-- Product Detail -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Product Images -->
+                <div>
+                    <div class="mb-4">
+                        <img id="main-image" src="https://picsum.photos/seed/product1/600/600.jpg" alt="Rosehip Radiance Cream" class="w-full rounded-lg">
+                    </div>
+                    <div class="grid grid-cols-4 gap-2">
+                        <img src="https://picsum.photos/seed/product1/150/150.jpg" alt="Product 1" class="thumbnail active rounded-lg cursor-pointer" onclick="changeImage('https://picsum.photos/seed/product1/600/600.jpg', this)">
+                        <img src="https://picsum.photos/seed/product1a/150/150.jpg" alt="Product 2" class="thumbnail rounded-lg cursor-pointer" onclick="changeImage('https://picsum.photos/seed/product1a/600/600.jpg', this)">
+                        <img src="https://picsum.photos/seed/product1b/150/150.jpg" alt="Product 3" class="thumbnail rounded-lg cursor-pointer" onclick="changeImage('https://picsum.photos/seed/product1b/600/600.jpg', this)">
+                        <img src="https://picsum.photos/seed/product1c/150/150.jpg" alt="Product 4" class="thumbnail rounded-lg cursor-pointer" onclick="changeImage('https://picsum.photos/seed/product1c/600/600.jpg', this)">
+                    </div>
+                </div>
+                
+                <!-- Product Info -->
+                <div>
+                    <div class="mb-4">
+                        <span class="bg-gold text-white text-xs px-2 py-1 rounded-full">Bestseller</span>
+                    </div>
+                    
+                    <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-4">Rosehip Radiance Cream</h1>
+                    
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-gold mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-600">4.5 (24 reviews)</span>
+                        <a href="#reviews" class="text-gold hover:underline ml-2">Write a review</a>
+                    </div>
+                    
+                    <p class="text-3xl font-bold text-gray-800 mb-6">$68</p>
+                    
+                    <p class="text-gray-600 mb-6">A luxurious facial cream infused with organic rosehip oil to restore and rejuvenate your skin. This powerful formula combines natural antioxidants and vitamins to reduce fine lines, improve skin texture, and reveal a radiant complexion.</p>
+                    
+                    <!-- Key Benefits -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-3">Key Benefits</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-gold mr-2"></i>
+                                <span>Reduces fine lines and wrinkles</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-gold mr-2"></i>
+                                <span>Improves skin elasticity and firmness</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-gold mr-2"></i>
+                                <span>Brightens and evens skin tone</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-gold mr-2"></i>
+                                <span>Deeply hydrates and nourishes</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Quantity and Add to Cart -->
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="flex items-center border border-gray-300 rounded-lg">
+                            <button id="decrease-quantity" class="px-3 py-2 hover:bg-gray-100">-</button>
+                            <input id="quantity" type="number" value="1" min="1" class="w-16 text-center border-x border-gray-300">
+                            <button id="increase-quantity" class="px-3 py-2 hover:bg-gray-100">+</button>
+                        </div>
+                        <button id="add-to-cart" class="bg-gold text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 flex-1">
+                            <i class="fas fa-shopping-bag mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Wishlist -->
+                    <button class="text-gold hover:underline mb-6">
+                        <i class="far fa-heart mr-2"></i> Add to Wishlist
+                    </button>
+                    
+                    <!-- Product Details Tabs -->
+                    <div class="border-t pt-6">
+                        <div class="flex space-x-6 border-b mb-6">
+                            <button class="tab-btn pb-2 border-b-2 border-gold text-gold font-medium" data-tab="description">Description</button>
+                            <button class="tab-btn pb-2 text-gray-600 hover:text-gold transition-colors duration-300" data-tab="ingredients">Ingredients</button>
+                            <button class="tab-btn pb-2 text-gray-600 hover:text-gold transition-colors duration-300" data-tab="how-to-use">How to Use</button>
+                            <button class="tab-btn pb-2 text-gray-600 hover:text-gold transition-colors duration-300" data-tab="reviews">Reviews</button>
+                        </div>
+                        
+                        <!-- Tab Content -->
+                        <div id="tab-content">
+                            <!-- Description Tab -->
+                            <div id="description" class="tab-content">
+                                <p class="text-gray-600 mb-4">Our Rosehip Radiance Cream is a luxurious facial treatment designed to transform your skin. Formulated with the finest organic rosehip oil, rich in vitamins A and C, this cream works to restore your skin's natural radiance while reducing the appearance of fine lines and wrinkles.</p>
+                                
+                                <p class="text-gray-600 mb-4">The lightweight yet deeply nourishing formula absorbs quickly without leaving a greasy residue, making it perfect for both day and night use. Regular use helps to improve skin texture, boost collagen production, and protect against environmental damage.</p>
+                                
+                                <p class="text-gray-600">Suitable for all skin types, especially mature or dry skin seeking rejuvenation and hydration.</p>
+                            </div>
+                            
+                            <!-- Ingredients Tab -->
+                            <div id="ingredients" class="tab-content hidden">
+                                <h4 class="font-semibold mb-3">Full Ingredients List:</h4>
+                                <p class="text-gray-600 mb-4">Rosa Canina (Rosehip) Seed Oil*, Butyrospermum Parkii (Shea) Butter*, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Tocopherol (Vitamin E), Ascorbyl Palmitate (Vitamin C), Helianthus Annuus (Sunflower) Seed Oil*, Rosa Damascena Flower Oil*, Citrus Aurantium Dulcis (Orange) Peel Oil*, Linalool**, Citronellol**, Geraniol**, Limonene**</p>
+                                
+                                <p class="text-sm text-gray-500">*Organically grown ingredient<br>**Naturally occurring component of essential oils</p>
+                            </div>
+                            
+                            <!-- How to Use Tab -->
+                            <div id="how-to-use" class="tab-content hidden">
+                                <h4 class="font-semibold mb-3">Application Instructions:</h4>
+                                <ol class="list-decimal list-inside space-y-2 text-gray-600">
+                                    <li>Cleanse your face thoroughly and pat dry</li>
+                                    <li>Apply a small amount of cream to your fingertips</li>
+                                    <li>Gently massage onto face and neck using upward circular motions</li>
+                                    <li>Allow to absorb fully before applying makeup</li>
+                                    <li>Use twice daily - morning and evening</li>
+                                </ol>
+                                
+                                <p class="text-gray-600 mt-4">For best results, use after our Rosehip Radiance Serum and follow with SPF during the day.</p>
+                            </div>
+                            
+                            <!-- Reviews Tab -->
+                            <div id="reviews" class="tab-content hidden">
+                                <h4 class="font-semibold mb-4">Customer Reviews</h4>
+                                
+                                <!-- Review 1 -->
+                                <div class="mb-6 pb-6 border-b">
+                                    <div class="flex items-center mb-2">
+                                        <div class="flex text-gold mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="font-medium">Sarah M.</span>
+                                        <span class="text-gray-500 text-sm ml-2">2 days ago</span>
+                                    </div>
+                                    <p class="text-gray-600">"Absolutely love this cream! My skin has never felt so soft and looks so radiant. The fine lines around my eyes have definitely diminished. Will definitely repurchase!"</p>
+                                </div>
+                                
+                                <!-- Review 2 -->
+                                <div class="mb-6 pb-6 border-b">
+                                    <div class="flex items-center mb-2">
+                                        <div class="flex text-gold mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="font-medium">Jennifer L.</span>
+                                        <span class="text-gray-500 text-sm ml-2">1 week ago</span>
+                                    </div>
+                                    <p class="text-gray-600">"Great product! Absorbs well and doesn't feel greasy. I've noticed improvement in my skin texture after just a few weeks of use."</p>
+                                </div>
+                                
+                                <button class="text-gold hover:underline">Write a Review</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Related Products -->
+    <section class="py-16 bg-light-gold">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-gray-800 text-center mb-12">You Might Also Like</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Related Product 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover">
+                    <a href="product.html?id=2">
+                        <div class="image-zoom h-64 overflow-hidden">
+                            <img src="https://picsum.photos/seed/product2/400/400.jpg" alt="Lavender Silk Body Butter" class="w-full h-full object-cover">
+                        </div>
+                    </a>
+                    <div class="p-4">
+                        <h3 class="text-xl font-serif font-semibold text-gray-800 mb-2">Lavender Silk Body Butter</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-800">$52</span>
+                            <button class="add-to-cart bg-gold text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition-all duration-300" data-product-id="2" data-product-name="Lavender Silk Body Butter" data-product-price="52">
+                                <i class="fas fa-shopping-bag mr-1"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related Product 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover">
+                    <a href="product.html?id=3">
+                        <div class="image-zoom h-64 overflow-hidden">
+                            <img src="https://picsum.photos/seed/product3/400/400.jpg" alt="Vitamin C Brightening Cream" class="w-full h-full object-cover">
+                        </div>
+                    </a>
+                    <div class="p-4">
+                        <h3 class="text-xl font-serif font-semibold text-gray-800 mb-2">Vitamin C Brightening Cream</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-800">$75</span>
+                            <button class="add-to-cart bg-gold text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition-all duration-300" data-product-id="3" data-product-name="Vitamin C Brightening Cream" data-product-price="75">
+                                <i class="fas fa-shopping-bag mr-1"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related Product 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover">
+                    <a href="product.html?id=8">
+                        <div class="image-zoom h-64 overflow-hidden">
+                            <img src="https://picsum.photos/seed/product8/400/400.jpg" alt="Hyaluronic Acid Serum" class="w-full h-full object-cover">
+                        </div>
+                    </a>
+                    <div class="p-4">
+                        <h3 class="text-xl font-serif font-semibold text-gray-800 mb-2">Hyaluronic Acid Serum</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-800">$65</span>
+                            <button class="add-to-cart bg-gold text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition-all duration-300" data-product-id="8" data-product-name="Hyaluronic Acid Serum" data-product-price="65">
+                                <i class="fas fa-shopping-bag mr-1"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related Product 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover">
+                    <a href="product.html?id=5">
+                        <div class="image-zoom h-64 overflow-hidden">
+                            <img src="https://picsum.photos/seed/product5/400/400.jpg" alt="Retinol Renewal Cream" class="w-full h-full object-cover">
+                        </div>
+                    </a>
+                    <div class="p-4">
+                        <h3 class="text-xl font-serif font-semibold text-gray-800 mb-2">Retinol Renewal Cream</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-800">$95</span>
+                            <button class="add-to-cart bg-gold text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition-all duration-300" data-product-id="5" data-product-name="Retinol Renewal Cream" data-product-price="95">
+                                <i class="fas fa-shopping-bag mr-1"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-4">Hams Store</h3>
+                    <p class="text-gray-300 mb-4">Luxury artisanal creams and bespoke fashion designs.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="shop.html" class="text-gray-300 hover:text-gold transition-colors duration-300">All Products</a></li>
+                        <li><a href="shop.html?category=skincare" class="text-gray-300 hover:text-gold transition-colors duration-300">Skincare</a></li>
+                        <li><a href="shop.html?category=body" class="text-gray-300 hover:text-gold transition-colors duration-300">Body Creams</a></li>
+                        <li><a href="shop.html?category=specialty" class="text-gray-300 hover:text-gold transition-colors duration-300">Specialty</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Fashion</h4>
+                    <ul class="space-y-2">
+                        <li><a href="collections.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Collections</a></li>
+                        <li><a href="bespoke.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Bespoke Design</a></li>
+                        <li><a href="bespoke.html#process" class="text-gray-300 hover:text-gold transition-colors duration-300">Our Process</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Style Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-300 hover:text-gold transition-colors duration-300">About Us</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Blog</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Contact</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-300 text-sm mb-4 md:mb-0">&copy; 2023 Hams Store. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300 text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300 text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Image gallery
+        function changeImage(src, thumbnail) {
+            document.getElementById('main-image').src = src;
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            thumbnail.classList.add('active');
+        }
+        
+        // Quantity controls
+        const quantityInput = document.getElementById('quantity');
+        
+        document.getElementById('decrease-quantity').addEventListener('click', () => {
+            if (quantityInput.value > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        });
+        
+        document.getElementById('increase-quantity').addEventListener('click', () => {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        });
+        
+        // Shopping cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = document.getElementById('cart-count');
+        
+        function updateCart() {
+            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+        
+        updateCart();
+        
+        // Add to cart
+        document.getElementById('add-to-cart').addEventListener('click', function() {
+            const quantity = parseInt(quantityInput.value);
+            
+            const existingItem = cart.find(item => item.id === '1');
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    id: '1',
+                    name: 'Rosehip Radiance Cream',
+                    price: 68,
+                    quantity: quantity
+                });
+            }
+            
+            updateCart();
+            
+            this.innerHTML = '<i class="fas fa-check mr-2"></i> Added to Cart';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-shopping-bag mr-2"></i> Add to Cart';
+            }, 2000);
+        });
+        
+        // Related products add to cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product-id');
+                const productName = this.getAttribute('data-product-name');
+                const productPrice = parseFloat(this.getAttribute('data-product-price'));
+                
+                const existingItem = cart.find(item => item.id === productId);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id: productId,
+                        name: productName,
+                        price: productPrice,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                
+                this.innerHTML = '<i class="fas fa-check mr-1"></i> Added';
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-shopping-bag mr-1"></i> Add';
+                }, 2000);
+            });
+        });
+        
+        // Tabs functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.getAttribute('data-tab');
+                
+                // Update button styles
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('border-b-2', 'border-gold', 'text-gold', 'font-medium');
+                    btn.classList.add('text-gray-600');
+                });
+                button.classList.add('border-b-2', 'border-gold', 'text-gold', 'font-medium');
+                button.classList.remove('text-gray-600');
+                
+                // Show/hide content
+                tabContents.forEach(content => {
+                    if (content.id === tabName) {
+                        content.classList.remove('hidden');
+                    } else {
+                        content.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

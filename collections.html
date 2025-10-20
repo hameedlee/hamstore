@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Collections | Hams Store</title>
+    <meta name="description" content="Explore our curated fashion collections, where artistry meets wearability in every piece.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream': '#F5F2ED',
+                        'beige': '#E8DFD3',
+                        'gold': '#D4AF37',
+                        'dark-cream': '#D6CFC2',
+                        'light-gold': '#F0E6D2',
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1rem;
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+        
+        .image-zoom {
+            overflow: hidden;
+        }
+        
+        .image-zoom img {
+            transition: transform 0.5s ease;
+        }
+        
+        .image-zoom:hover img {
+            transform: scale(1.05);
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #D4AF37;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-cream">
+    <!-- Header Navigation -->
+    <header class="fixed top-0 w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-serif font-bold text-gray-800">Hams Store</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-gold transition-colors duration-300 flex items-center">
+                            Creams <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                            <a href="shop.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">All Products</a>
+                            <a href="shop.html?category=skincare" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Skincare</a>
+                            <a href="shop.html?category=body" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Body Creams</a>
+                            <a href="shop.html?category=specialty" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Specialty</a>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-gold transition-colors duration-300 flex items-center">
+                            Fashion <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                            <a href="collections.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Collections</a>
+                            <a href="bespoke.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Bespoke Design</a>
+                            <a href="bespoke.html#process" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Our Process</a>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="text-gray-700 hover:text-gold transition-colors duration-300">About</a>
+                    <a href="blog.html" class="text-gray-700 hover:text-gold transition-colors duration-300">Blog</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-gold transition-colors duration-300">Contact</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-700 hover:text-gold transition-colors duration-300">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="text-gray-700 hover:text-gold transition-colors duration-300">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <a href="cart.html" class="relative text-gray-700 hover:text-gold transition-colors duration-300">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="shop.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">All Products</a>
+                <a href="shop.html?category=skincare" class="block text-gray-700 hover:text-gold transition-colors duration-300">Skincare</a>
+                <a href="shop.html?category=body" class="block text-gray-700 hover:text-gold transition-colors duration-300">Body Creams</a>
+                <a href="shop.html?category=specialty" class="block text-gray-700 hover:text-gold transition-colors duration-300">Specialty</a>
+                <a href="collections.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Collections</a>
+                <a href="bespoke.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Bespoke Design</a>
+                <a href="about.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">About</a>
+                <a href="blog.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Blog</a>
+                <a href="contact.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Page Header -->
+    <section class="pt-24 pb-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-gray-800 text-center mb-4">Fashion Collections</h1>
+            <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto">Explore our curated fashion collections, where artistry meets wearability in every piece. Each collection tells a unique story through carefully crafted designs.</p>
+        </div>
+    </section>
+    
+    <!-- Collections Filter -->
+    <section class="py-8 bg-white border-b">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-2">
+                <button class="collection-filter-btn active px-6 py-2 rounded-full border border-gold bg-gold text-white" data-filter="all">All Collections</button>
+                <button class="collection-filter-btn px-6 py-2 rounded-full border border-gray-300" data-filter="spring">Spring Elegance</button>
+                <button class="collection-filter-btn px-6 py-2 rounded-full border border-gray-300" data-filter="urban">Urban Sophistication</button>
+                <button class="collection-filter-btn px-6 py-2 rounded-full border border-gray-300" data-filter="evening">Evening Luxe</button>
+                <button class="collection-filter-btn px-6 py-2 rounded-full border border-gray-300" data-filter="minimalist">Minimalist Chic</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Fashion Gallery -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="masonry-grid">
+                <!-- Collection Item 1 -->
+                <div class="masonry-item" data-collection="spring">
+                    <div class="image-zoom rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://picsum.photos/seed/fashion2/400/500.jpg" alt="Spring Elegance" class="w-full h-auto object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-xl font-serif font-semibold text-gray-800">Spring Elegance</h3>
+                            <p class="text-gray-600 text-sm">Light, airy designs inspired by spring blossoms and new beginnings</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Collection Item 2 -->
+                <div class="masonry-item" data-collection="urban">
+                    <div class="image-zoom rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://picsum.photos/seed/fashion3/400/600.jpg" alt="Urban Sophistication" class="w-full h-auto object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-xl font-serif font-semibold text-gray-800">Urban Sophistication</h3>
+                            <p class="text-gray-600 text-sm">Bold silhouettes for the modern professional navigating city life</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Collection Item 3 -->
+                <div class="masonry-item" data-collection="evening">
+                    <div class="image-zoom rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://picsum.photos/seed/fashion4/400/450.jpg" alt="Evening Luxe" class="w-full h-auto object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-xl font-serif font-semibold text-gray-800">Evening Luxe</h3>
+                            <p class="text-gray-600 text-sm">Glamorous pieces that shine under moonlight and city lights</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Collection Item 4 -->
+                <div class="masonry-item" data-collection="minimalist">
+                    <div class="image-zoom rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://picsum.photos/seed/fashion5/400/550.jpg" alt="Minimalist Chic" class="w-full h-auto object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-xl font-serif font-semibold text-gray-800">Minimalist Chic</h3>
+                            <p class="text-gray-600 text-sm">Clean lines and subtle details for effortless elegance</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Collection Item 5 -->
+                <div class="masonry-item" data-collection="spring">
+                    <div class="image-zoom rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://picsum.photos/seed/fashion6/400/480.jpg" alt="Bohemian Dreams" class="w-full h-auto object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-xl font-serif font-semibold text-gray-800">Bohemian Dreams</h3>
+                            <p class="text-gray-600 text-sm">Free-spirited designs with intricate details and flowing fabrics</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Collection Item 6 -->
+                <div class="masonry-item" data-collection="urban">
+                    <div class="image-zoom rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://picsum.photos/seed/fashion7/400/520.jpg" alt="Corporate Power" class="w-full h-auto object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-xl font-serif font-semibold text-gray-800">Corporate Power</h3>
+                            <p class="text-gray-600 text-sm">Professional attire with a fashion-forward edge</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Collection Item 7 -->
+                <div class="masonry-item" data-collection="evening">
+                    <div class="image-zoom rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://picsum.photos/seed/fashion8/400/470.jpg" alt="Red Carpet Ready" class="w-full h-auto object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-xl font-serif font-semibold text-gray-800">Red Carpet Ready</h3>
+                            <p class="text-gray-600 text-sm">Show-stopping designs for your most memorable moments</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Collection Item 8 -->
+                <div class="masonry-item" data-collection="minimalist">
+                    <div class="image-zoom rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://picsum.photos/seed/fashion9/400/530.jpg" alt="Essential Basics" class="w-full h-auto object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-xl font-serif font-semibold text-gray-800">Essential Basics</h3>
+                            <p class="text-gray-600 text-sm">Timeless pieces that form the foundation of any wardrobe</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Collection Item 9 -->
+                <div class="masonry-item" data-collection="spring">
+                    <div class="image-zoom rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://picsum.photos/seed/fashion10/400/490.jpg" alt="Garden Party" class="w-full h-auto object-cover">
+                        <div class="p-4 bg-white">
+                            <h3 class="text-xl font-serif font-semibold text-gray-800">Garden Party</h3>
+                            <p class="text-gray-600 text-sm">Delicate designs perfect for outdoor celebrations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Collection -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-4">Featured Collection: Spring Elegance</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Our latest collection celebrates the renewal and beauty of spring through flowing silhouettes, delicate details, and a palette inspired by blooming gardens.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://picsum.photos/seed/spring-collection/600/700.jpg" alt="Spring Elegance Collection" class="w-full rounded-lg shadow-lg">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-4">The Story Behind Spring Elegance</h3>
+                    <p class="text-gray-600 mb-4">Inspired by the first blooms of spring, this collection embodies renewal, hope, and the delicate beauty of nature awakening. Each piece is designed to move with you like a gentle breeze, featuring lightweight fabrics and flowing silhouettes.</p>
+                    
+                    <p class="text-gray-600 mb-6">Our designers drew inspiration from cherry blossoms, morning dew, and the soft pastels of a spring sunrise. The collection features hand-embroidered details, sustainable fabrics, and versatile pieces that transition seamlessly from day to evening.</p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            <span class="text-gray-700">Sustainable and ethically sourced materials</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            <span class="text-gray-700">Limited edition pieces with unique details</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            <span class="text-gray-700">Versatile designs for multiple occasions</span>
+                        </div>
+                    </div>
+                    
+                    <a href="bespoke.html" class="inline-block bg-gold text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">Request Custom Piece</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-16 bg-light-gold">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-4">Ready for Your Bespoke Design?</h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">Let our expert designers create a piece that's uniquely yours. From concept to creation, we'll bring your vision to life.</p>
+            <a href="bespoke.html" class="inline-block bg-gold text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">Book a Consultation</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-4">Hams Store</h3>
+                    <p class="text-gray-300 mb-4">Luxury artisanal creams and bespoke fashion designs.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="shop.html" class="text-gray-300 hover:text-gold transition-colors duration-300">All Products</a></li>
+                        <li><a href="shop.html?category=skincare" class="text-gray-300 hover:text-gold transition-colors duration-300">Skincare</a></li>
+                        <li><a href="shop.html?category=body" class="text-gray-300 hover:text-gold transition-colors duration-300">Body Creams</a></li>
+                        <li><a href="shop.html?category=specialty" class="text-gray-300 hover:text-gold transition-colors duration-300">Specialty</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Fashion</h4>
+                    <ul class="space-y-2">
+                        <li><a href="collections.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Collections</a></li>
+                        <li><a href="bespoke.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Bespoke Design</a></li>
+                        <li><a href="bespoke.html#process" class="text-gray-300 hover:text-gold transition-colors duration-300">Our Process</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Style Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-300 hover:text-gold transition-colors duration-300">About Us</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Blog</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Contact</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-300 text-sm mb-4 md:mb-0">&copy; 2023 Hams Store. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300 text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300 text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Collection filtering
+        const filterButtons = document.querySelectorAll('.collection-filter-btn');
+        const collectionItems = document.querySelectorAll('.masonry-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-gold', 'text-white', 'border-gold');
+                    btn.classList.add('border-gray-300');
+                });
+                button.classList.add('active', 'bg-gold', 'text-white', 'border-gold');
+                button.classList.remove('border-gray-300');
+                
+                // Filter collections
+                const filter = button.getAttribute('data-filter');
+                collectionItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-collection') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Shopping cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = document.getElementById('cart-count');
+        
+        function updateCart() {
+            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+        
+        updateCart();
+    </script>
+</body>
+</html>

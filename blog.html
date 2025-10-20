@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Hams Store</title>
+    <meta name="description" content="Discover the latest trends, skincare tips, and behind-the-scenes insights from Hams Store's fashion and beauty blog.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream': '#F5F2ED',
+                        'beige': '#E8DFD3',
+                        'gold': '#D4AF37',
+                        'dark-cream': '#D6CFC2',
+                        'light-gold': '#F0E6D2',
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .image-zoom {
+            overflow: hidden;
+        }
+        
+        .image-zoom img {
+            transition: transform 0.5s ease;
+        }
+        
+        .image-zoom:hover img {
+            transform: scale(1.05);
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #D4AF37;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-tag {
+            transition: all 0.3s ease;
+        }
+        
+        .category-tag:hover {
+            background-color: #D4AF37;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-cream">
+    <!-- Header Navigation -->
+    <header class="fixed top-0 w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-serif font-bold text-gray-800">Hams Store</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-gold transition-colors duration-300 flex items-center">
+                            Creams <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                            <a href="shop.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">All Products</a>
+                            <a href="shop.html?category=skincare" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Skincare</a>
+                            <a href="shop.html?category=body" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Body Creams</a>
+                            <a href="shop.html?category=specialty" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Specialty</a>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-gold transition-colors duration-300 flex items-center">
+                            Fashion <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                            <a href="collections.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Collections</a>
+                            <a href="bespoke.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Bespoke Design</a>
+                            <a href="bespoke.html#process" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Our Process</a>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="text-gray-700 hover:text-gold transition-colors duration-300">About</a>
+                    <a href="blog.html" class="text-gold font-medium">Blog</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-gold transition-colors duration-300">Contact</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-700 hover:text-gold transition-colors duration-300">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="text-gray-700 hover:text-gold transition-colors duration-300">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <a href="cart.html" class="relative text-gray-700 hover:text-gold transition-colors duration-300">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="shop.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">All Products</a>
+                <a href="shop.html?category=skincare" class="block text-gray-700 hover:text-gold transition-colors duration-300">Skincare</a>
+                <a href="shop.html?category=body" class="block text-gray-700 hover:text-gold transition-colors duration-300">Body Creams</a>
+                <a href="shop.html?category=specialty" class="block text-gray-700 hover:text-gold transition-colors duration-300">Specialty</a>
+                <a href="collections.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Collections</a>
+                <a href="bespoke.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Bespoke Design</a>
+                <a href="about.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">About</a>
+                <a href="blog.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Blog</a>
+                <a href="contact.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-serif font-bold text-gray-800 mb-6">From Our Journal</h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Discover the latest trends, skincare tips, and behind-the-scenes insights from our design studio</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Post -->
+    <section class="py-16 bg-light-gold">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="image-zoom h-96 md:h-auto">
+                        <img src="https://picsum.photos/seed/featured-blog/800/600.jpg" alt="Featured Blog Post" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8 flex flex-col justify-center">
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="bg-gold text-white px-3 py-1 rounded-full mr-3">Featured</span>
+                            <span>May 15, 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>8 min read</span>
+                        </div>
+                        <h2 class="text-3xl font-serif font-bold text-gray-800 mb-4">The Future of Sustainable Fashion: Our Commitment to a Greener Tomorrow</h2>
+                        <p class="text-gray-600 mb-6">Explore how Hams Store is pioneering sustainable practices in luxury fashion, from eco-friendly materials to ethical production methods that don't compromise on style or quality.</p>
+                        <div class="flex items-center mb-6">
+                            <img src="https://picsum.photos/seed/author1/50/50.jpg" alt="Author" class="w-12 h-12 rounded-full mr-3">
+                            <div>
+                                <p class="font-medium text-gray-800">Hams Anderson</p>
+                                <p class="text-sm text-gray-500">Founder & Creative Director</p>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-block text-gold hover:underline font-medium">Read Full Story →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Category Filter -->
+    <section class="py-8 bg-white border-b">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-2">
+                <button class="category-filter-btn active px-4 py-2 rounded-full border border-gold bg-gold text-white" data-category="all">All Posts</button>
+                <button class="category-filter-btn px-4 py-2 rounded-full border border-gray-300" data-category="skincare">Skincare</button>
+                <button class="category-filter-btn px-4 py-2 rounded-full border border-gray-300" data-category="fashion">Fashion</button>
+                <button class="category-filter-btn px-4 py-2 rounded-full border border-gray-300" data-category="lifestyle">Lifestyle</button>
+                <button class="category-filter-btn px-4 py-2 rounded-full border border-gray-300" data-category="behind-the-scenes">Behind the Scenes</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Blog Posts Grid -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <article class="blog-card bg-white rounded-lg overflow-hidden shadow-md" data-category="skincare">
+                    <div class="image-zoom h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/blog1/400/300.jpg" alt="The Art of Layering Skincare" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <span class="category-tag px-2 py-1 bg-light-gold text-gray-700 rounded-full text-xs mr-2">Skincare</span>
+                            <span>May 15, 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-800 mb-3">The Art of Layering Skincare</h3>
+                        <p class="text-gray-600 mb-4">Master the technique of layering skincare products for maximum efficacy and glowing skin.</p>
+                        <a href="#" class="text-gold hover:underline font-medium">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 2 -->
+                <article class="blog-card bg-white rounded-lg overflow-hidden shadow-md" data-category="fashion">
+                    <div class="image-zoom h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/blog2/400/300.jpg" alt="Spring Summer 2023 Trends" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <span class="category-tag px-2 py-1 bg-light-gold text-gray-700 rounded-full text-xs mr-2">Fashion</span>
+                            <span>May 12, 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>6 min read</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-800 mb-3">Spring/Summer 2023: The Trends That Matter</h3>
+                        <p class="text-gray-600 mb-4">Discover the key fashion trends for the upcoming season and how to incorporate them into your wardrobe.</p>
+                        <a href="#" class="text-gold hover:underline font-medium">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 3 -->
+                <article class="blog-card bg-white rounded-lg overflow-hidden shadow-md" data-category="behind-the-scenes">
+                    <div class="image-zoom h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/blog3/400/300.jpg" alt="Creating a Bespoke Piece" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <span class="category-tag px-2 py-1 bg-light-gold text-gray-700 rounded-full text-xs mr-2">Behind the Scenes</span>
+                            <span>May 8, 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>7 min read</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-800 mb-3">Behind the Scenes: Creating a Bespoke Piece</h3>
+                        <p class="text-gray-600 mb-4">Follow the journey of a custom design from initial concept to final creation.</p>
+                        <a href="#" class="text-gold hover:underline font-medium">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 4 -->
+                <article class="blog-card bg-white rounded-lg overflow-hidden shadow-md" data-category="skincare">
+                    <div class="image-zoom h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/blog4/400/300.jpg" alt="Natural Ingredients Guide" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <span class="category-tag px-2 py-1 bg-light-gold text-gray-700 rounded-full text-xs mr-2">Skincare</span>
+                            <span>May 5, 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>8 min read</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-800 mb-3">Natural Ingredients: Your Complete Guide</h3>
+                        <p class="text-gray-600 mb-4">Learn about the powerful natural ingredients we use and their benefits for your skin.</p>
+                        <a href="#" class="text-gold hover:underline font-medium">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 5 -->
+                <article class="blog-card bg-white rounded-lg overflow-hidden shadow-md" data-category="lifestyle">
+                    <div class="image-zoom h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/blog5/400/300.jpg" alt="Morning Ritual" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <span class="category-tag px-2 py-1 bg-light-gold text-gray-700 rounded-full text-xs mr-2">Lifestyle</span>
+                            <span>May 1, 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-800 mb-3">Creating the Perfect Morning Ritual</h3>
+                        <p class="text-gray-600 mb-4">Start your day right with our guide to creating a luxurious morning routine.</p>
+                        <a href="#" class="text-gold hover:underline font-medium">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 6 -->
+                <article class="blog-card bg-white rounded-lg overflow-hidden shadow-md" data-category="fashion">
+                    <div class="image-zoom h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/blog6/400/300.jpg" alt="Wardrobe Essentials" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <span class="category-tag px-2 py-1 bg-light-gold text-gray-700 rounded-full text-xs mr-2">Fashion</span>
+                            <span>April 28, 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>6 min read</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-800 mb-3">Building a Capsule Wardrobe: The Essentials</h3>
+                        <p class="text-gray-600 mb-4">Discover the key pieces every woman needs for a versatile, stylish wardrobe.</p>
+                        <a href="#" class="text-gold hover:underline font-medium">Read More →</a>
+                    </div>
+                </article>
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="bg-gold text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">Load More Posts</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-dark-cream">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-3xl font-serif font-bold text-gray-800 mb-4">Stay Inspired</h2>
+                <p class="text-lg text-gray-600 mb-8">Get our latest articles and exclusive content delivered to your inbox weekly.</p>
+                
+                <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <input type="email" id="newsletter-email" placeholder="Enter your email address" required class="px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-gold flex-grow max-w-md">
+                    <button type="submit" class="bg-gold text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">Subscribe</button>
+                </form>
+                
+                <p id="newsletter-message" class="mt-4 text-green-600 hidden">Thank you for subscribing!</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Instagram Feed -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-serif font-bold text-gray-800 mb-4">Follow Us on Instagram</h2>
+                <p class="text-lg text-gray-600">@hamsstore</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="image-zoom rounded-lg overflow-hidden">
+                    <img src="https://picsum.photos/seed/insta1/300/300.jpg" alt="Instagram Post" class="w-full h-full object-cover">
+                </div>
+                <div class="image-zoom rounded-lg overflow-hidden">
+                    <img src="https://picsum.photos/seed/insta2/300/300.jpg" alt="Instagram Post" class="w-full h-full object-cover">
+                </div>
+                <div class="image-zoom rounded-lg overflow-hidden">
+                    <img src="https://picsum.photos/seed/insta3/300/300.jpg" alt="Instagram Post" class="w-full h-full object-cover">
+                </div>
+                <div class="image-zoom rounded-lg overflow-hidden">
+                    <img src="https://picsum.photos/seed/insta4/300/300.jpg" alt="Instagram Post" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-4">Hams Store</h3>
+                    <p class="text-gray-300 mb-4">Luxury artisanal creams and bespoke fashion designs.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="shop.html" class="text-gray-300 hover:text-gold transition-colors duration-300">All Products</a></li>
+                        <li><a href="shop.html?category=skincare" class="text-gray-300 hover:text-gold transition-colors duration-300">Skincare</a></li>
+                        <li><a href="shop.html?category=body" class="text-gray-300 hover:text-gold transition-colors duration-300">Body Creams</a></li>
+                        <li><a href="shop.html?category=specialty" class="text-gray-300 hover:text-gold transition-colors duration-300">Specialty</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Fashion</h4>
+                    <ul class="space-y-2">
+                        <li><a href="collections.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Collections</a></li>
+                        <li><a href="bespoke.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Bespoke Design</a></li>
+                        <li><a href="bespoke.html#process" class="text-gray-300 hover:text-gold transition-colors duration-300">Our Process</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Style Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-300 hover:text-gold transition-colors duration-300">About Us</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Blog</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Contact</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-300 text-sm mb-4 md:mb-0">&copy; 2023 Hams Store. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300 text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300 text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Shopping cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = document.getElementById('cart-count');
+        
+        function updateCart() {
+            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+        
+        updateCart();
+        
+        // Category filtering
+        const filterButtons = document.querySelectorAll('.category-filter-btn');
+        const blogPosts = document.querySelectorAll('.blog-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-gold', 'text-white', 'border-gold');
+                    btn.classList.add('border-gray-300');
+                });
+                button.classList.add('active', 'bg-gold', 'text-white', 'border-gold');
+                button.classList.remove('border-gray-300');
+                
+                // Filter posts
+                const category = button.getAttribute('data-category');
+                blogPosts.forEach(post => {
+                    if (category === 'all' || post.getAttribute('data-category') === category) {
+                        post.style.display = 'block';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Newsletter form
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('newsletter-message').classList.remove('hidden');
+            this.reset();
+            setTimeout(() => {
+                document.getElementById('newsletter-message').classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bespoke Fashion Design | Hams Store</title>
+    <meta name="description" content="Experience custom fashion design at Hams Store. Book a consultation for bespoke pieces tailored to your unique style and vision.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream': '#F5F2ED',
+                        'beige': '#E8DFD3',
+                        'gold': '#D4AF37',
+                        'dark-cream': '#D6CFC2',
+                        'light-gold': '#F0E6D2',
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .image-zoom {
+            overflow: hidden;
+        }
+        
+        .image-zoom img {
+            transition: transform 0.5s ease;
+        }
+        
+        .image-zoom:hover img {
+            transform: scale(1.05);
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #D4AF37;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .process-step {
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .timeline-line {
+            background: linear-gradient(to right, #D4AF37, #F0E6D2);
+        }
+    </style>
+</head>
+<body class="bg-cream">
+    <!-- Header Navigation -->
+    <header class="fixed top-0 w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-serif font-bold text-gray-800">Hams Store</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-gold transition-colors duration-300 flex items-center">
+                            Creams <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                            <a href="shop.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">All Products</a>
+                            <a href="shop.html?category=skincare" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Skincare</a>
+                            <a href="shop.html?category=body" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Body Creams</a>
+                            <a href="shop.html?category=specialty" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Specialty</a>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-gold transition-colors duration-300 flex items-center">
+                            Fashion <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                            <a href="collections.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Collections</a>
+                            <a href="bespoke.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Bespoke Design</a>
+                            <a href="bespoke.html#process" class="block px-4 py-2 text-sm text-gray-700 hover:bg-light-gold">Our Process</a>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="text-gray-700 hover:text-gold transition-colors duration-300">About</a>
+                    <a href="blog.html" class="text-gray-700 hover:text-gold transition-colors duration-300">Blog</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-gold transition-colors duration-300">Contact</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-700 hover:text-gold transition-colors duration-300">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="text-gray-700 hover:text-gold transition-colors duration-300">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <a href="cart.html" class="relative text-gray-700 hover:text-gold transition-colors duration-300">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="shop.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">All Products</a>
+                <a href="shop.html?category=skincare" class="block text-gray-700 hover:text-gold transition-colors duration-300">Skincare</a>
+                <a href="shop.html?category=body" class="block text-gray-700 hover:text-gold transition-colors duration-300">Body Creams</a>
+                <a href="shop.html?category=specialty" class="block text-gray-700 hover:text-gold transition-colors duration-300">Specialty</a>
+                <a href="collections.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Collections</a>
+                <a href="bespoke.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Bespoke Design</a>
+                <a href="about.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">About</a>
+                <a href="blog.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Blog</a>
+                <a href="contact.html" class="block text-gray-700 hover:text-gold transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h1 class="text-4xl md:text-6xl font-serif font-bold text-gray-800 mb-6">Bespoke Fashion Design</h1>
+                    <p class="text-xl text-gray-600 mb-8">Experience the pinnacle of personal style with our custom design service. Our team of expert designers works closely with you to bring your vision to life, creating one-of-a-kind pieces that reflect your unique personality and lifestyle.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#consultation" class="bg-gold text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">Book a Consultation</a>
+                        <a href="#process" class="border-2 border-gold text-gold px-8 py-3 rounded-full hover:bg-gold hover:text-white transition-all duration-300 transform hover:scale-105">Our Process</a>
+                    </div>
+                </div>
+                <div class="image-zoom rounded-lg overflow-hidden shadow-lg fade-in">
+                    <img src="https://picsum.photos/seed/bespoke1/600/700.jpg" alt="Bespoke Fashion Design" class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Choose Bespoke -->
+    <section class="py-16 bg-light-gold">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-4">Why Choose Bespoke?</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Custom fashion is more than just clothing – it's an expression of your individuality</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center fade-in">
+                    <div class="bg-gold text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">Perfect Fit</h3>
+                    <p class="text-gray-600">Every piece is tailored to your exact measurements, ensuring unparalleled comfort and a flawless silhouette.</p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="bg-gold text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-palette text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">Unique Design</h3>
+                    <p class="text-gray-600">Work with our designers to create pieces that are truly one-of-a-kind, reflecting your personal style.</p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="bg-gold text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-gem text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">Premium Quality</h3>
+                    <p class="text-gray-600">We use only the finest materials and employ expert craftsmanship to create pieces that last a lifetime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Our Process -->
+    <section id="process" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-4">Our Process</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">From concept to creation, we guide you through every step of the bespoke journey</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full timeline-line hidden md:block"></div>
+                    
+                    <!-- Process Steps -->
+                    <div class="space-y-12">
+                        <!-- Step 1 -->
+                        <div class="process-step flex items-center fade-in">
+                            <div class="w-full md:w-1/2 md:pr-8 md:text-right">
+                                <div class="bg-white p-6 rounded-lg shadow-md">
+                                    <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">1. Initial Consultation</h3>
+                                    <p class="text-gray-600 mb-4">Begin with a comprehensive consultation where we discuss your style preferences, lifestyle needs, and vision for the piece.</p>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Style assessment</li>
+                                        <li>• Measurements taken</li>
+                                        <li>• Budget discussion</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-gold rounded-full border-4 border-white z-10 hidden md:block"></div>
+                            <div class="w-full md:w-1/2 md:pl-8"></div>
+                        </div>
+                        
+                        <!-- Step 2 -->
+                        <div class="process-step flex items-center fade-in">
+                            <div class="w-full md:w-1/2 md:pr-8"></div>
+                            <div class="w-8 h-8 bg-gold rounded-full border-4 border-white z-10 hidden md:block"></div>
+                            <div class="w-full md:w-1/2 md:pl-8">
+                                <div class="bg-white p-6 rounded-lg shadow-md">
+                                    <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">2. Design Development</h3>
+                                    <p class="text-gray-600 mb-4">Our designers create initial sketches and concepts based on your input, with multiple rounds of revisions.</p>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Concept sketches</li>
+                                        <li>• Material selection</li>
+                                        <li>• Design refinements</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3 -->
+                        <div class="process-step flex items-center fade-in">
+                            <div class="w-full md:w-1/2 md:pr-8 md:text-right">
+                                <div class="bg-white p-6 rounded-lg shadow-md">
+                                    <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">3. Material Sourcing</h3>
+                                    <p class="text-gray-600 mb-4">We source premium materials specifically for your piece, from luxurious fabrics to unique embellishments.</p>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Fabric swatches</li>
+                                        <li>• Material approvals</li>
+                                        <li>• Sustainable options</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-gold rounded-full border-4 border-white z-10 hidden md:block"></div>
+                            <div class="w-full md:w-1/2 md:pl-8"></div>
+                        </div>
+                        
+                        <!-- Step 4 -->
+                        <div class="process-step flex items-center fade-in">
+                            <div class="w-full md:w-1/2 md:pr-8"></div>
+                            <div class="w-8 h-8 bg-gold rounded-full border-4 border-white z-10 hidden md:block"></div>
+                            <div class="w-full md:w-1/2 md:pl-8">
+                                <div class="bg-white p-6 rounded-lg shadow-md">
+                                    <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">4. Creation & Fitting</h3>
+                                    <p class="text-gray-600 mb-4">Our skilled artisans bring the design to life, with multiple fittings to ensure perfect execution.</p>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Pattern making</li>
+                                        <li>• First fitting</li>
+                                        <li>• Final adjustments</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 5 -->
+                        <div class="process-step flex items-center fade-in">
+                            <div class="w-full md:w-1/2 md:pr-8 md:text-right">
+                                <div class="bg-white p-6 rounded-lg shadow-md">
+                                    <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">5. Final Reveal</h3>
+                                    <p class="text-gray-600 mb-4">The moment you've been waiting for – try on your completed bespoke piece and experience the perfect fit.</p>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Final fitting</li>
+                                        <li>• Styling consultation</li>
+                                        <li>• Care instructions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-gold rounded-full border-4 border-white z-10 hidden md:block"></div>
+                            <div class="w-full md:w-1/2 md:pl-8"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bespoke Services -->
+    <section class="py-16 bg-light-gold">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-4">Our Bespoke Services</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">From everyday elegance to special occasion glamour</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md fade-in">
+                    <div class="image-zoom h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/wedding/400/300.jpg" alt="Wedding & Evening Wear" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">Wedding & Evening Wear</h3>
+                        <p class="text-gray-600 mb-4">Create unforgettable moments with custom gowns and formal wear designed exclusively for you.</p>
+                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                            <li>• Wedding dresses</li>
+                            <li>• Evening gowns</li>
+                            <li>• Red carpet looks</li>
+                        </ul>
+                        <a href="#consultation" class="text-gold hover:underline font-medium">Inquire Now →</a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md fade-in">
+                    <div class="image-zoom h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/business/400/300.jpg" alt="Corporate & Business" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">Corporate & Business</h3>
+                        <p class="text-gray-600 mb-4">Elevate your professional wardrobe with tailored pieces that command attention and respect.</p>
+                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                            <li>• Power suits</li>
+                            <li>• Business dresses</li>
+                            <li>• Executive wear</li>
+                        </ul>
+                        <a href="#consultation" class="text-gold hover:underline font-medium">Inquire Now →</a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md fade-in">
+                    <div class="image-zoom h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/casual/400/300.jpg" alt="Casual & Day Wear" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">Casual & Day Wear</h3>
+                        <p class="text-gray-600 mb-4">Express your personal style with custom casual pieces that combine comfort and sophistication.</p>
+                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                            <li>• Custom dresses</li>
+                            <li>• Tailored separates</li>
+                            <li>• Unique coordinates</li>
+                        </ul>
+                        <a href="#consultation" class="text-gold hover:underline font-medium">Inquire Now →</a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md fade-in">
+                    <div class="image-zoom h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/accessories/400/300.jpg" alt="Accessories" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">Accessories</h3>
+                        <p class="text-gray-600 mb-4">Complete your look with custom-designed accessories that complement your unique style.</p>
+                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                            <li>• Handbags</li>
+                            <li>• Belts</li>
+                            <li>• Custom jewelry</li>
+                        </ul>
+                        <a href="#consultation" class="text-gold hover:underline font-medium">Inquire Now →</a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md fade-in">
+                    <div class="image-zoom h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/alterations/400/300.jpg" alt="Alterations & Restyling" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">Alterations & Restyling</h3>
+                        <p class="text-gray-600 mb-4">Transform existing pieces or update vintage finds with our expert alteration services.</p>
+                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                            <li>• Perfect fit alterations</li>
+                            <li>• Style updates</li>
+                            <li>• Restoration services</li>
+                        </ul>
+                        <a href="#consultation" class="text-gold hover:underline font-medium">Inquire Now →</a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md fade-in">
+                    <div class="image-zoom h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/consultation/400/300.jpg" alt="Style Consulting" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">Style Consulting</h3>
+                        <p class="text-gray-600 mb-4">Work with our stylists to develop your personal brand and curate the perfect wardrobe.</p>
+                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                            <li>• Wardrobe audit</li>
+                            <li>• Personal styling</li>
+                            <li>• Shopping assistance</li>
+                        </ul>
+                        <a href="#consultation" class="text-gold hover:underline font-medium">Inquire Now →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-4">Client Experiences</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Hear from those who have experienced the magic of bespoke design</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-light-gold rounded-lg p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/seed/client1/60/60.jpg" alt="Client" class="w-14 h-14 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Alexandra Chen</h4>
+                            <p class="text-sm text-gray-600">Wedding Client</p>
+                        </div>
+                    </div>
+                    <div class="flex text-gold mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic">"The wedding dress Hams Store created for me was beyond my wildest dreams. Every detail was perfect, and I felt absolutely beautiful on my special day. The entire process was seamless and enjoyable."</p>
+                </div>
+                
+                <div class="bg-light-gold rounded-lg p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/seed/client2/60/60.jpg" alt="Client" class="w-14 h-14 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Marcus Thompson</h4>
+                            <p class="text-sm text-gray-600">Corporate Client</p>
+                        </div>
+                    </div>
+                    <div class="flex text-gold mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic">"As an executive, appearance matters. The bespoke suits from Hams Store have elevated my professional presence. The fit is impeccable, and the quality is unmatched. Worth every investment."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Consultation Form -->
+    <section id="consultation" class="py-16 bg-dark-cream">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12 fade-in">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-4">Book Your Consultation</h2>
+                    <p class="text-lg text-gray-600">Ready to begin your bespoke journey? Schedule a consultation with our design team.</p>
+                </div>
+                
+                <form id="consultation-form" class="bg-white rounded-lg p-8 shadow-lg fade-in">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="first-name" class="block text-gray-700 font-medium mb-2">First Name *</label>
+                            <input type="text" id="first-name" name="first-name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold">
+                        </div>
+                        <div>
+                            <label for="last-name" class="block text-gray-700 font-medium mb-2">Last Name *</label>
+                            <input type="text" id="last-name" name="last-name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="service" class="block text-gray-700 font-medium mb-2">Service Interest *</label>
+                        <select id="service" name="service" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold">
+                            <option value="">Please select a service</option>
+                            <option value="wedding">Wedding & Evening Wear</option>
+                            <option value="corporate">Corporate & Business</option>
+                            <option value="casual">Casual & Day Wear</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="alterations">Alterations & Restyling</option>
+                            <option value="consulting">Style Consulting</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="timeline" class="block text-gray-700 font-medium mb-2">Timeline</label>
+                        <select id="timeline" name="timeline" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold">
+                            <option value="">Select timeline</option>
+                            <option value="asap">As soon as possible</option>
+                            <option value="1month">Within 1 month</option>
+                            <option value="3months">Within 3 months</option>
+                            <option value="6months">Within 6 months</option>
+                            <option value="1year">Within 1 year</option>
+                            <option value="just-exploring">Just exploring options</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="consultation-type" class="block text-gray-700 font-medium mb-2">Preferred Consultation Type</label>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="consultation-type" value="virtual" class="mr-2">
+                                <span>Virtual</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="consultation-type" value="in-store" class="mr-2">
+                                <span>In-Store</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="consultation-type" value="at-home" class="mr-2">
+                                <span>At-Home (NYC only)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Tell us about your vision</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold" placeholder="Describe the piece you have in mind, occasion, style preferences, etc."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-gold text-white py-3 rounded-full hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 font-medium">
+                        Request Consultation
+                    </button>
+                </form>
+                
+                <div id="consultation-message" class="mt-4 p-4 rounded-lg hidden"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Guide -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-4">Investment Guide</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Bespoke design is an investment in quality, fit, and personal expression</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="text-center fade-in">
+                    <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">Starting at $2,500</h3>
+                    <p class="text-gray-600 mb-2">Day Wear & Casual Pieces</p>
+                    <p class="text-sm text-gray-500">Dresses, separates, coordinates</p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">Starting at $5,000</h3>
+                    <p class="text-gray-600 mb-2">Business & Cocktail</p>
+                    <p class="text-sm text-gray-500">Suits, business dresses, evening wear</p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-3">Starting at $8,000</h3>
+                    <p class="text-gray-600 mb-2">Wedding & Formal</p>
+                    <p class="text-sm text-gray-500">Gowns, red carpet, special occasion</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8 fade-in">
+                <p class="text-gray-600">Final pricing depends on complexity, materials, and design details. A detailed quote will be provided after your initial consultation.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-4">Hams Store</h3>
+                    <p class="text-gray-300 mb-4">Luxury artisanal creams and bespoke fashion designs.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="shop.html" class="text-gray-300 hover:text-gold transition-colors duration-300">All Products</a></li>
+                        <li><a href="shop.html?category=skincare" class="text-gray-300 hover:text-gold transition-colors duration-300">Skincare</a></li>
+                        <li><a href="shop.html?category=body" class="text-gray-300 hover:text-gold transition-colors duration-300">Body Creams</a></li>
+                        <li><a href="shop.html?category=specialty" class="text-gray-300 hover:text-gold transition-colors duration-300">Specialty</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Fashion</h4>
+                    <ul class="space-y-2">
+                        <li><a href="collections.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Collections</a></li>
+                        <li><a href="bespoke.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Bespoke Design</a></li>
+                        <li><a href="bespoke.html#process" class="text-gray-300 hover:text-gold transition-colors duration-300">Our Process</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Style Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-300 hover:text-gold transition-colors duration-300">About Us</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Blog</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Contact</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-300 text-sm mb-4 md:mb-0">&copy; 2023 Hams Store. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300 text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300 text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Shopping cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = document.getElementById('cart-count');
+        
+        function updateCart() {
+            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+        
+        updateCart();
+        
+        // Consultation form submission
+        document.getElementById('consultation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('consultation-message');
+            formMessage.className = 'mt-4 p-4 rounded-lg bg-green-100 text-green-700';
+            formMessage.textContent = 'Thank you for your inquiry! We\'ll contact you within 24 hours to schedule your consultation.';
+            formMessage.classList.remove('hidden');
+            
+            // Reset form
+            this.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+        
+        // Fade in animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
