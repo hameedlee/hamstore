@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond Fashion and Beauty Royal - Artisanal Creams & Bespoke Fashion</title>
+  <meta name="description" content="Discover luxury skincare creams and bespoke fashion designs. Premium, personalized products for discerning urban professionals." />
+  <meta name="keywords" content="luxury skincare creams, custom fashion design, artisanal beauty products, bespoke fashion" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#D4AF37',
+            cream: '#F5F2ED',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #D4AF37;
+      color: #fff;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .image-zoom img {
+      transition: transform 0.5s ease;
+    }
+    .image-zoom:hover img {
+      transform: scale(1.08);
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body class="bg-cream font-sans">
+
+  <!-- Header -->
+  <header class="fixed top-0 w-full bg-white shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#home" class="text-2xl font-serif font-bold text-gray-800">Diamond Royal</a>
+
+      <!-- Nav -->
+      <nav class="hidden md:flex space-x-6">
+        <a href="#skincare" class="hover:text-gold">Creams</a>
+        <a href="#collections" class="hover:text-gold">Fashion</a>
+        <a href="#about" class="hover:text-gold">About</a>
+        <a href="#contact" class="hover:text-gold">Contact</a>
+      </nav>
+
+      <!-- Icons -->
+      <div class="flex items-center space-x-4">
+        <button id="cart-btn" class="relative text-gray-700 hover:text-gold">
+          <i class="fas fa-shopping-bag"></i>
+          <span id="cart-count" class="cart-badge">0</span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-white border-t md:hidden">
+      <div class="px-4 py-3 space-y-2">
+        <a href="#skincare" class="block hover:text-gold">Creams</a>
+        <a href="#collections" class="block hover:text-gold">Fashion</a>
+        <a href="#about" class="block hover:text-gold">About</a>
+        <a href="#contact" class="block hover:text-gold">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-cream to-white pt-20">
+    <div class="max-w-6xl mx-auto text-center space-y-6">
+      <h1 class="text-5xl md:text-6xl font-serif font-bold text-gray-800">Artisanal Creams & Bespoke Fashion</h1>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Where timeless elegance meets modern luxury. Explore handcrafted skincare and couture fashion made for you.
+      </p>
+      <div class="flex justify-center space-x-4">
+        <a href="#skincare" class="bg-gold text-white px-6 py-3 rounded-full hover:opacity-90 transition">Shop Creams</a>
+        <a href="#collections" class="border-2 border-gold text-gold px-6 py-3 rounded-full hover:bg-gold hover:text-white transition">View Fashion</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best-Selling Creams -->
+  <section id="skincare" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-serif font-bold mb-3">Best-Selling Creams</h2>
+        <p class="text-gray-600">Nourish your skin with our finest natural blends.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex justify-center gap-3 mb-8 flex-wrap">
+        <button class="filter-btn active px-4 py-2 border border-gray-300 rounded-full" data-filter="all">All</button>
+        <button class="filter-btn px-4 py-2 border border-gray-300 rounded-full" data-filter="skincare">Skincare</button>
+        <button class="filter-btn px-4 py-2 border border-gray-300 rounded-full" data-filter="body">Body</button>
+        <button class="filter-btn px-4 py-2 border border-gray-300 rounded-full" data-filter="specialty">Specialty</button>
+      </div>
+
+      <!-- Products -->
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Example Product -->
+        <div class="product-card card-hover bg-white rounded-lg overflow-hidden shadow-md" data-category="skincare">
+          <div class="image-zoom h-60 overflow-hidden">
+            <img src="cream1.jpg" alt="Rosehip Radiance Cream" class="w-full h-full object-cover">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif font-semibold text-xl text-gray-800">Rosehip Radiance Cream</h3>
+            <p class="text-gray-600 text-sm mb-2">Infused with rosehip oil for glowing skin.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-2xl font-bold text-gray-800">$68</span>
+              <button class="add-to-cart bg-gold text-white px-4 py-2 rounded-full hover:opacity-90 transition" data-product-id="1" data-product-name="Rosehip Radiance Cream" data-product-price="68">
+                <i class="fas fa-shopping-bag mr-1"></i> Add
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Cart logic
+    const cartCount = document.getElementById('cart-count');
+    let cart = 0;
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        cart++;
+        cartCount.textContent = cart;
+      });
+    });
+
+    // Product filtering
+    const buttons = document.querySelectorAll('.filter-btn');
+    const products = document.querySelectorAll('.product-card');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('bg-gold', 'text-white'));
+        btn.classList.add('bg-gold', 'text-white');
+        const filter = btn.dataset.filter;
+        products.forEach(p => {
+          p.style.display = (filter === 'all' || p.dataset.category === filter) ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
